@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+body, html {
+margin: 0%;
+padding: 0%;
+font-family: 'Kanit', sans-serif;
+}
+
+.modalparent{
+  top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  position: fixed;
+  background-color: rgb(0, 0, 0,0.5);
+  z-index: 1;
+}
+
+.modalchild{
+width: 35%;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 20%;
+background-color: white;
+border-radius: 20px;
+}
+
+.input{
+border-radius: 5px;
+outline: none;
+}
+
+.container{
+  display: flex;
+height: 100vh;
+width: 100%;
+}
+
+.sidebar{
+  width: 30%;
+}
+
+.content{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    width: 100%;
+  }
+}
+
+.contentContainer{
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 1%;
+  img{
+    width: 1rem;
+  }
+}
+
+.addButton{
+  position: absolute;
+  bottom: 5%;
+  left: 25%;
+}
