@@ -22,8 +22,8 @@ font-family: 'Kanit', sans-serif;
 .modalchild{
 width: 35%;
 display: flex;
+flex-direction: column;
 align-items: center;
-justify-content: center;
 height: 20%;
 background-color: white;
 border-radius: 20px;
@@ -42,6 +42,8 @@ width: 100%;
 
 .sidebar{
   width: 30%;
+  overflow-y: scroll;
+
 }
 
 .content{
@@ -75,5 +77,38 @@ width: 100%;
 .addButton{
   position: absolute;
   bottom: 5%;
-  left: 25%;
+  left: 23%;
+}
+
+.create{
+  background-color: #001f8b;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  padding: 0.4rem 2rem;
+}
+
+.pfp{
+  color: white;
+  border-radius: 50%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  align-items: center;
+}
+
+.notesTitleDiv{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding-left: 2rem;
+}
+
+.notesTitle{
+font-size: 1.25rem;
+font-weight: 600;
 }
