@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const SideBar = () => {
+const SideBar = ({setData , setShow , show , setFilterData}) => {
 let past = JSON.parse(localStorage.getItem("savedData"))
     const [popup, setpopup] = useState(false);
     let [mdata,setMData] = useState( !past ? [] : past );
@@ -30,20 +30,35 @@ let past = JSON.parse(localStorage.getItem("savedData"))
     }
 
     useEffect(()=>{
+        setData(mdata);
+        setFilterData(selectCat)
+        if(!show){
+            setSelectCat('')
+           }
+    },[selectCat , show])
+
+    useEffect(()=>{
         window.localStorage.setItem("savedData" , JSON.stringify(mdata));
     },[mdata])
 
+    const handleStates = (name) => {
+       setSelectCat(name);
+       setShow(true);
+    }
+
   return (
     <div className='sidebar'>
-        <h1 style={{textAlign:'center'}}>Pocket News</h1>
+        <div className='logo' onClick={()=>setShow(false)}><img src='../assets/logo.png' alt="task"/><h1>Pocket News</h1></div>
         <img className='addButton'  onClick={()=>setpopup(true)} width="50" height="50" src="https://img.icons8.com/ios-filled/50/16008b/add--v1.png" alt="add--v1"/>
+        <div className='scroll' >
         {mdata && mdata.map((cur)=>{
         return(
-            <div onClick={()=>setSelectCat(cur.name)}  style={{background: `${cur.name}` === selectCat ? "#dcdcdc" : null}}  key={cur.name} className='notesTitleDiv' >
+            <div onClick={()=>handleStates(cur.name)} style={{background: `${cur.name}` === selectCat ? "#dcdcdc" : null}}  key={cur.name} className='notesTitleDiv' >
             <p className='pfp' style={{background:`${cur.color}`}}>{cur.initials}</p>
             <p className='notesTitle'>{cur.name}</p>
             </div>
         )})}
+        </div>
         {popup ?
         <div className='modalparent'>
         <div className='modalchild'> 
