@@ -6,7 +6,7 @@ import DataCard from '../Components/DataCard';
 
 const Homepage = () => {
  
-    const server = JSON.parse(localStorage.getItem('allNotes'));
+    let server = JSON.parse(localStorage.getItem('allNotes'));
 
     const date = new Date();
     const Hour = date.getHours();
@@ -24,19 +24,22 @@ const [allNotes , setAllNotes] = useState(server ? server : []);
         data: "",
         category:"",
     });
-    const [displaydata , setdisplaydata] = useState(server ? server : []);
+    const [displaydata , setdisplaydata] = useState([]);
 
 useEffect(()=>{
     if(data && filterData){
             const a = data.filter(str => str.name === filterData);
+            if(a){
             setCData(a);
+            }
     }
     setStoredata({
         data: "",
         category:"",
         time:"",
     })
-    setAllNotes((prev)=>{return[...prev , storedata]})
+
+    storedata.name ? setAllNotes((prev)=>{return[...prev , storedata]}) : null;
         },[filterData]);
 
 
@@ -45,19 +48,21 @@ useEffect(()=>{
        } 
 
        const submitdata = () => {
-        localStorage.setItem('allNotes' , JSON.stringify(allNotes));
+        setAllNotes((prev)=>{return[...prev , storedata]});
        }
 
 
        useEffect(()=>{
-        if(allNotes.length>0){
         const a = allNotes.filter(str=>str.category === filterData);
+        if(a.length>0){
         setdisplaydata(a);
         }
-       },[filterData])
-
-   
-       console.log(displaydata)
+        else{
+          setdisplaydata([])
+        }
+        localStorage.setItem('allNotes' , JSON.stringify(allNotes));
+       },[filterData , allNotes])
+     
 
   return (
     <div className='container'>
@@ -85,8 +90,9 @@ useEffect(()=>{
             
             <div className='inputTextDiv'>
              <textarea  value={storedata.data} className='inputText' placeholder='Enter your text here...........'  onChange={(e)=>handleStoreData(e)} />
+             {storedata.data.length>0 ?
              <img onClick={()=>submitdata()} className='sendButton'  width="24" height="24" src="https://img.icons8.com/001f8b/material-rounded/24/sent.png" alt="sent"/>
-             
+             : null}
              </div>
             </div>
                 

@@ -45,7 +45,7 @@ let past = JSON.parse(localStorage.getItem("savedData"))
 
   return (
     <div className='sidebar'>
-        <div className='logo' onClick={()=>setShow(false)}><img src='../assets/logo.png' alt="task"/><h1>Pocket News</h1></div>
+        <div className='logo' onClick={()=>setShow(false)}><img src='../assets/logo.png' alt="task"/><h1>Pocket Notes</h1></div>
         <img className='addButton'  onClick={()=>setpopup(true)} width="50" height="50" src="https://img.icons8.com/ios-filled/50/16008b/add--v1.png" alt="add--v1"/>
         <div className='scroll' >
         {mdata && mdata.map((cur)=>{
