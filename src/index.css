@@ -169,8 +169,9 @@ font-weight: 600;
 
 .inputText{
   padding: 1rem;
-width: 90%;
+width: 100%;
 outline: none;
+border-radius: 15px;
 height: 4rem;
 resize: none;
 overflow-y: scroll;
@@ -209,6 +210,8 @@ margin: 1rem 0rem;
 .card{
   width: 90%;
 padding: 1rem;
+background-color: white;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .sendButton{
@@ -217,4 +220,14 @@ padding: 1rem;
   cursor: pointer;
   bottom: 18%;
   color: red;
+}
+
+.notesDiv{
+  height: 60%;
+  overflow-y: scroll;
+}
+
+.time{
+  text-align: end;
+  font-weight: 800;
 }

@@ -8,21 +8,23 @@ const Homepage = () => {
  
     const server = JSON.parse(localStorage.getItem('allNotes'));
 
+    const date = new Date();
+    const Hour = date.getHours();
+    const AmPm = Hour > 12 ? "PM" : "AM";
+    const Min = date.getMinutes();
+    const Day = date.getDate();
+    const Month = date.getMonth() + 1;
+
     const [show,setShow] = useState(false);
     const [data,setData] = useState();
     const [filterData,setFilterData] = useState();
     const [ cdata , setCData] = useState();
-
+const [allNotes , setAllNotes] = useState(server ? server : []);
     const [storedata , setStoredata] = useState({
         data: "",
         category:"",
     });
-
-    const [serverdata , setServerData] = useState([]);
-    const [displaydata , setdisplaydata] = useState( []);
-
-    console.log(displaydata)
-
+    const [displaydata , setdisplaydata] = useState(server ? server : []);
 
 useEffect(()=>{
     if(data && filterData){
@@ -32,28 +34,36 @@ useEffect(()=>{
     setStoredata({
         data: "",
         category:"",
+        time:"",
     })
+    setAllNotes((prev)=>{return[...prev , storedata]})
         },[filterData]);
 
 
        const handleStoreData = (e) => {
-        setStoredata((prev)=>{return {...prev , data:e.target.value , category: filterData}})
+        setStoredata((prev)=>{return {...prev , data:e.target.value , category: filterData , time: Day + " - " + Month + " · " + Hour + " : " + Min + " " + AmPm}})
        } 
 
        const submitdata = () => {
-        setServerData((prev)=>{return [...prev, storedata]})
-        localStorage.setItem('allNotes' , JSON.stringify(serverdata));
-        // const a = serverdata.filter(str=>str.category === filterData);
-        // setdisplaydata((prev)=>{return [...prev , a]});
-        // console.log(displaydata)
+        localStorage.setItem('allNotes' , JSON.stringify(allNotes));
        }
 
+
+       useEffect(()=>{
+        if(allNotes.length>0){
+        const a = allNotes.filter(str=>str.category === filterData);
+        setdisplaydata(a);
+        }
+       },[filterData])
+
    
+       console.log(displaydata)
+
   return (
     <div className='container'>
 
 
-        <SideBar setData={setData}  setFilterData={setFilterData} setShow={setShow} show={show} />
+        <SideBar setData={setData}  setFilterData={setFilterData}  setShow={setShow} />
 
 
         {show ? 
@@ -62,14 +72,14 @@ useEffect(()=>{
            <div className='blueRibbon'><div style={{display:'flex' , width:'95%',gap:'1rem' , alignItems:'center'} }>  <p className='pfp' style={{background:`${cdata && cdata[0].color}`,border:'2px white solid' , color:'white'}}>{cdata && cdata[0].initials}</p><p>{cdata && cdata[0].name}</p></div></div>
             
           
-          <div>
-            {displaydata && displaydata.map((cur,index)=>{
+          <div className='notesDiv'>
+            {displaydata.length > 0  ?  displaydata.map((cur,index)=>{
                 return (
                     <div className='cardDiv' key={index}>
-                        <DataCard data={cur} />
+                     <DataCard data={cur} />
                   </div>
                 )
-            })}
+            }) : <p>no data</p>}
 
           </div>
             

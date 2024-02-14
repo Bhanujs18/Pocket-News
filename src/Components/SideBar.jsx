@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const SideBar = ({setData , setShow , show , setFilterData}) => {
+const SideBar = ({setData , setShow , setFilterData}) => {
 let past = JSON.parse(localStorage.getItem("savedData"))
     const [popup, setpopup] = useState(false);
     let [mdata,setMData] = useState( !past ? [] : past );
@@ -32,10 +32,7 @@ let past = JSON.parse(localStorage.getItem("savedData"))
     useEffect(()=>{
         setData(mdata);
         setFilterData(selectCat)
-        if(!show){
-            setSelectCat('')
-           }
-    },[selectCat , show])
+    },[selectCat])
 
     useEffect(()=>{
         window.localStorage.setItem("savedData" , JSON.stringify(mdata));
