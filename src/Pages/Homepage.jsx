@@ -89,7 +89,7 @@ useEffect(()=>{
                      <DataCard data={cur} />
                   </div>
                 )
-            }) : <p>no data</p>}
+            }) : <p className='noNotes'>No Notes Added</p>}
 
           </div>
             

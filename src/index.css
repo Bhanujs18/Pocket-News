@@ -3,6 +3,7 @@
 body, html {
 margin: 0%;
 padding: 0%;
+transition: all 0.3 ease;
 font-family: 'Kanit', sans-serif;
 }
 
@@ -48,6 +49,11 @@ border-radius: 20px;
   align-items: center;
   display: flex;
   justify-content: left;
+}
+
+.noNotes{
+  text-align: center;
+  font-size: 1.3rem;
 }
 
 
