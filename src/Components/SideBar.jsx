@@ -27,6 +27,12 @@ let past = JSON.parse(localStorage.getItem("savedData"))
             setMData((prev)=>{
             return [...prev, cdata]
            })
+           setcData({
+            name:"",
+            color:'#001f8b',
+            initials:""
+        });
+        setpopup(false);
     }
 
     useEffect(()=>{
@@ -57,20 +63,30 @@ let past = JSON.parse(localStorage.getItem("savedData"))
         )})}
         </div>
         {popup ?
-        <div className='modalparent'>
-        <div className='modalchild'> 
-        <div>     
-        <p>Create Your Group</p>  
-            <label htmlFor='groupName'>Group Name
+        <div>
+        <div className='modalparent' onClick={()=>setpopup(false)}></div>
+        <div className='modalchild' onClick={()=>setpopup(true)}> 
+            <div className='modalDivs'>     
+            <p style={{fontSize:'1.2rem' , fontWeight:800}}>Create Your Group</p>  
+            </div>
+            <div className='modalDivs'>
+            <label className='modalDivs inputDiv'  style={{gap:'1rem' , fontWeight:600}} htmlFor='groupName'>Group Name
             <input type='text' value={cdata.name} className='input' id='groupName' onChange={(e)=>handleData(e)} placeholder='Enter group name' />
            </label>
-           <label htmlFor='color'>Select Color
-            <input type='color' value={cdata.color} className='input' id='color' onChange={(e)=>setcData((prev)=>{return {...prev , color:(e.target.value)}})} placeholder='Enter group name' />
-           </label>
-           <div style={{display:'flex' , width:'100%' , justifyContent:'end'}}>
-           <button className='create' onClick={handleAllData}>Create</button>
-           <button onClick={()=>setpopup(false)}>Close</button>
            </div>
+           <div className='modalDivs' >
+           <ul className='chooseColors'>
+            Choose color : &nbsp;
+            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#b38bfa"}})}></li>
+            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#ff79f2"}})}></li>
+            <li className='colorSelector'  onClick={(e)=>setcData((prev)=>{return {...prev , color: "#43e6fc"}})}></li>
+            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#f19576"}})}></li>
+            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#0047ff"}})}></li>
+            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#6691ff"}})}></li>
+           </ul>
+           </div>
+           <div className='modalDivs' style={{display:'flex' , width:'100%' , justifyContent:'end'}}>
+           <button className='create' onClick={handleAllData}>Create</button>
            </div>
         </div>
         </div> : null }

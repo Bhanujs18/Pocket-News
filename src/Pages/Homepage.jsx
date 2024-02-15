@@ -13,6 +13,7 @@ const Homepage = () => {
     const AmPm = Hour > 12 ? "PM" : "AM";
     const Min = date.getMinutes();
     const Day = date.getDate();
+    const Year = date.getFullYear();
     const Month = date.getMonth() + 1;
 
     const [show,setShow] = useState(false);
@@ -44,12 +45,16 @@ useEffect(()=>{
 
 
        const handleStoreData = (e) => {
-        setStoredata((prev)=>{return {...prev , data:e.target.value , category: filterData , time: Day + " - " + Month + " · " + Hour + " : " + Min + " " + AmPm}})
+        setStoredata((prev)=>{return {...prev , data:e.target.value , category: filterData , time: Day + " - " + Month + " - " + Year + " · " + Hour + " : " + Min + " " + AmPm}})
        } 
 
        const submitdata = () => {
         setAllNotes((prev)=>{return[...prev , storedata]});
-       }
+        setStoredata({
+          data: "",
+          category:"",
+          time:"",
+      });}
 
 
        useEffect(()=>{
