@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const SideBar = ({setData , setShow , setFilterData}) => {
+const SideBar = ({setData , setShow , setFilterData , show}) => {
 let past = JSON.parse(localStorage.getItem("savedData"))
     const [popup, setpopup] = useState(false);
     let [mdata,setMData] = useState( !past ? [] : past );
@@ -10,6 +10,8 @@ let past = JSON.parse(localStorage.getItem("savedData"))
         color:'#001f8b',
         initials:""
     })
+
+    let [border , setBorder] = useState();
 
     const handleData = (e) => {
         e.preventDefault();
@@ -29,7 +31,7 @@ let past = JSON.parse(localStorage.getItem("savedData"))
            })
            setcData({
             name:"",
-            color:'#001f8b',
+            color:"",
             initials:""
         });
         setpopup(false);
@@ -50,9 +52,9 @@ let past = JSON.parse(localStorage.getItem("savedData"))
     }
 
   return (
-    <div className='sidebar'>
+    <div  className= {show ? 'noshow' : 'sidebar'}>
         <div className='logo' onClick={()=>setShow(false)}><img src='../assets/logo.png' alt="task"/><h1>Pocket Notes</h1></div>
-        <img className='addButton'  onClick={()=>setpopup(true)} width="50" height="50" src="https://img.icons8.com/ios-filled/50/16008b/add--v1.png" alt="add--v1"/>
+        <img className='addButton'  onClick={()=>setpopup(true)} src="https://img.icons8.com/ios-filled/50/16008b/add--v1.png" alt="add--v1"/>
         <div className='scroll' >
         {mdata && mdata.map((cur)=>{
         return(
@@ -77,12 +79,12 @@ let past = JSON.parse(localStorage.getItem("savedData"))
            <div className='modalDivs' >
            <ul className='chooseColors'>
             Choose color : &nbsp;
-            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#b38bfa"}})}></li>
-            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#ff79f2"}})}></li>
-            <li className='colorSelector'  onClick={(e)=>setcData((prev)=>{return {...prev , color: "#43e6fc"}})}></li>
-            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#f19576"}})}></li>
-            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#0047ff"}})}></li>
-            <li  className='colorSelector' onClick={(e)=>setcData((prev)=>{return {...prev , color: "#6691ff"}})}></li>
+            <li className={cdata.color === "#b38bfa" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#b38bfa"}})}></li>
+            <li   className={cdata.color === "#ff79f2" ?  "border colorSelector" : "colorSelector"}onClick={(e)=>setcData((prev)=>{return {...prev , color: "#ff79f2"}})}></li>
+            <li className={cdata.color === "#43e6fc" ?  "border colorSelector" : "colorSelector"}  onClick={(e)=>setcData((prev)=>{return {...prev , color: "#43e6fc"}})}></li>
+            <li  className={cdata.color === "#f19576" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#f19576"}})}></li>
+            <li  className={cdata.color === "#0047ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#0047ff"}})}></li>
+            <li  className={cdata.color === "#6691ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#6691ff"}})}></li>
            </ul>
            </div>
            <div className='modalDivs' style={{display:'flex' , width:'100%' , justifyContent:'end'}}>
