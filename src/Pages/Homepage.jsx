@@ -73,7 +73,7 @@ useEffect(()=>{
     <div className='container'>
 
 
-        <SideBar setData={setData}  setFilterData={setFilterData}  setShow={setShow} show={show} className="sidebarDiv" />
+        <SideBar setData={setData}  setFilterData={setFilterData}  setShow={setShow} show={show} className="sidebar" />
 
 
         {show ? 

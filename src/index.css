@@ -122,6 +122,12 @@ width: 100%;
   justify-content: center;
   align-items: center;
 }
+.noshow{
+  width: 30%;
+  margin: 0%;
+  padding: 0%;
+overflow: hidden;
+}
 
 .scroll{
   overflow-y: scroll;
