@@ -80,11 +80,11 @@ let past = JSON.parse(localStorage.getItem("savedData"))
            <ul className='chooseColors'>
             Choose color : &nbsp;
             <li className={cdata.color === "#b38bfa" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#b38bfa"}})}></li>
-            <li   className={cdata.color === "#ff79f2" ?  "border colorSelector" : "colorSelector"}onClick={(e)=>setcData((prev)=>{return {...prev , color: "#ff79f2"}})}></li>
+            <li className={cdata.color === "#ff79f2" ?  "border colorSelector" : "colorSelector"}onClick={(e)=>setcData((prev)=>{return {...prev , color: "#ff79f2"}})}></li>
             <li className={cdata.color === "#43e6fc" ?  "border colorSelector" : "colorSelector"}  onClick={(e)=>setcData((prev)=>{return {...prev , color: "#43e6fc"}})}></li>
-            <li  className={cdata.color === "#f19576" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#f19576"}})}></li>
-            <li  className={cdata.color === "#0047ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#0047ff"}})}></li>
-            <li  className={cdata.color === "#6691ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#6691ff"}})}></li>
+            <li className={cdata.color === "#f19576" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#f19576"}})}></li>
+            <li className={cdata.color === "#0047ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#0047ff"}})}></li>
+            <li className={cdata.color === "#6691ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#6691ff"}})}></li>
            </ul>
            </div>
            <div className='modalDivs' style={{display:'flex' , width:'100%' , justifyContent:'end'}}>

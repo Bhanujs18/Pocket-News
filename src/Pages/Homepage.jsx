@@ -79,7 +79,7 @@ useEffect(()=>{
         {show ? 
         <div  className= {show ? 'contentScreen contentDIv' : 'contentDiv'} >
         
-           <div className='blueRibbon'><div style={{display:'flex' , width:'95%',gap:'1rem' , alignItems:'center'} }> <img className='back' onClick={()=>setShow(false)} width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/ffffff/left.png" alt="left"/> <p className='pfp' style={{background:`${cdata && cdata[0].color}`,border:'2px white solid' , color:'white'}}>{cdata && cdata[0].initials}</p><p>{cdata && cdata[0].name}</p></div></div>
+           <div className='blueRibbon'><div style={{display:'flex' , width:'95%',gap:'1rem' , alignItems:'center'} }> <img className='back' onClick={()=>setShow(false)} width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/ffffff/left.png" alt="left"/> <p className='pfp' style={{background:`${cdata && cdata[0].color}`,border:'2px white solid' , color:'white'}}>{cdata && cdata[0].initials}</p><p style={{fontSize:'1.3rem'}}>{cdata && cdata[0].name}</p></div></div>
             
           
           <div className='notesDiv'>
