@@ -11,8 +11,6 @@ let past = JSON.parse(localStorage.getItem("savedData"))
         initials:""
     })
 
-    let [border , setBorder] = useState();
-
     const handleData = (e) => {
         e.preventDefault();
         setcData((prev)=>{return {...prev , name: e.target.value }});
@@ -55,7 +53,7 @@ let past = JSON.parse(localStorage.getItem("savedData"))
     <div  className= {show ? 'noshow' : 'sidebar'}>
         <div className='logo' onClick={()=>setShow(false)}><img src='../assets/logo.png' alt="task"/><h1>Pocket Notes</h1></div>
         <img className='addButton'  onClick={()=>setpopup(true)} src="https://img.icons8.com/ios-filled/50/16008b/add--v1.png" alt="add--v1"/>
-        <div className='scroll' >
+        <div className='scroll scrollbar' >
         {mdata && mdata.map((cur)=>{
         return(
             <div onClick={()=>handleStates(cur.name)} style={{background: `${cur.name}` === selectCat ? "#dcdcdc" : null}}  key={cur.name} className='notesTitleDiv' >
@@ -79,12 +77,12 @@ let past = JSON.parse(localStorage.getItem("savedData"))
            <div className='modalDivs' >
            <ul className='chooseColors'>
             Choose color : &nbsp;
-            <li className={cdata.color === "#b38bfa" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#b38bfa"}})}></li>
-            <li className={cdata.color === "#ff79f2" ?  "border colorSelector" : "colorSelector"}onClick={(e)=>setcData((prev)=>{return {...prev , color: "#ff79f2"}})}></li>
-            <li className={cdata.color === "#43e6fc" ?  "border colorSelector" : "colorSelector"}  onClick={(e)=>setcData((prev)=>{return {...prev , color: "#43e6fc"}})}></li>
-            <li className={cdata.color === "#f19576" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#f19576"}})}></li>
-            <li className={cdata.color === "#0047ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#0047ff"}})}></li>
-            <li className={cdata.color === "#6691ff" ?  "border colorSelector" : "colorSelector"} onClick={(e)=>setcData((prev)=>{return {...prev , color: "#6691ff"}})}></li>
+            <li className={cdata.color === "#b38bfa" ?  "border colorSelector" : "colorSelector"} onClick={()=>setcData((prev)=>{return {...prev , color: "#b38bfa"}})}></li>
+            <li className={cdata.color === "#ff79f2" ?  "border colorSelector" : "colorSelector"}onClick={()=>setcData((prev)=>{return {...prev , color: "#ff79f2"}})}></li>
+            <li className={cdata.color === "#43e6fc" ?  "border colorSelector" : "colorSelector"}  onClick={()=>setcData((prev)=>{return {...prev , color: "#43e6fc"}})}></li>
+            <li className={cdata.color === "#f19576" ?  "border colorSelector" : "colorSelector"} onClick={()=>setcData((prev)=>{return {...prev , color: "#f19576"}})}></li>
+            <li className={cdata.color === "#0047ff" ?  "border colorSelector" : "colorSelector"} onClick={()=>setcData((prev)=>{return {...prev , color: "#0047ff"}})}></li>
+            <li className={cdata.color === "#6691ff" ?  "border colorSelector" : "colorSelector"} onClick={()=>setcData((prev)=>{return {...prev , color: "#6691ff"}})}></li>
            </ul>
            </div>
            <div className='modalDivs' style={{display:'flex' , width:'100%' , justifyContent:'end'}}>

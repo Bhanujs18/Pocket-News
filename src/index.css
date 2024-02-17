@@ -134,18 +134,6 @@ overflow: hidden;
   height: 80%;
 }
 
-.scroll::-webkit-scrollbar{
-  width: 15px;
-}
-.scroll::-webkit-scrollbar-track{
-  background-color: #d9d9d9;
-}
-.scroll::-webkit-scrollbar-thumb{
-  background-color: white;
-  border: 1px #d9d9d9 solid;
-  border-radius: 15px;
-}
-
 .sidebar{
   width: 30%;
   margin: 0%;
@@ -153,9 +141,6 @@ overflow: hidden;
 overflow: hidden;
 
 }
-
-
-
 
 .content{
   width: 70%;
@@ -265,19 +250,6 @@ scrollbar-color: red;
 margin: 1rem;
 }
 
-.inputText::-webkit-scrollbar {
-  width: 15px;             
-}
-
-.inputText::-webkit-scrollbar-track {
-  background: #d9d9d9;        
-}
-
-.inputText::-webkit-scrollbar-thumb {
-  background-color: white;
-  border: 1px #d9d9d9 solid;
-  border-radius: 15px;
-}
 .contentDIv{
   width: 70%;
   display: flex;
@@ -316,15 +288,15 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 0;
   overflow-y: scroll;
 }
-.notesDiv::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar {
   width: 15px;             
 }
 
-.notesDiv::-webkit-scrollbar-track {
+.scrollbar::-webkit-scrollbar-track {
   background: #d9d9d9;        
 }
 
-.notesDiv::-webkit-scrollbar-thumb {
+.scrollbar::-webkit-scrollbar-thumb {
   background-color: white;
   border: 1px #d9d9d9 solid;
   border-radius: 15px;
@@ -395,3 +367,11 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 1.2rem;
   }
 } 
+
+
+.blueRibbonData{
+    display: flex;
+    width: 95%;
+    gap: 1rem;
+    align-items: center;
+}
